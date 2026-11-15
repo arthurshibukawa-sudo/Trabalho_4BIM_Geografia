@@ -4,25 +4,92 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MinerTech | Início</title>
+    <meta name="description" content="Tecnologia consciente, futuro sustentável: da mina ao lixo eletrônico.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="imagens/favicon-32x32.png">
     <link rel="stylesheet" href="CSS/style.css">
     <script src="JavaScript/script.js" defer></script>
 </head>
 <body>
 
-<!-- Cabeçalho, menu lateral e rodapé são inseridos pelo script.js -->
+<header class="cabecalho">
+    <button class="botao-menu" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-lateral">☰</button>
+    <a href="index.html" class="marca">
+        <img src="imagens/logo.png" alt="Logotipo MinerTech" class="logo">
+        <span class="nome-site">Miner<span>Tech</span></span>
+    </a>
+</header>
+
+<aside class="menu-lateral" id="menu-lateral">
+    <div class="menu-topo">
+        <h2 class="menu-titulo">Menu</h2>
+        <button class="botao-recolher" type="button" aria-label="Recolher menu" aria-expanded="true" aria-controls="menu-lateral">«</button>
+    </div>
+    <nav class="menu" aria-label="Navegação principal">
+            <a href="index.html" class="ativo" aria-current="page"><span class="icone" aria-hidden="true">⌂</span><span class="texto">Início</span></a>
+            <a href="sobre.html"><span class="icone" aria-hidden="true">ℹ</span><span class="texto">Sobre</span></a>
+            <a href="pesquisas.html"><span class="icone" aria-hidden="true">▤</span><span class="texto">Pesquisas</span></a>
+            <a href="problema.html"><span class="icone" aria-hidden="true">⚠</span><span class="texto">Problema</span></a>
+            <a href="logistica_reversa.html"><span class="icone" aria-hidden="true">♻</span><span class="texto">Logística reversa</span></a>
+            <a href="contato.html"><span class="icone" aria-hidden="true">✉</span><span class="texto">Contato</span></a>
+    </nav>
+    <img src="imagens/logo.png" alt="" class="logo-menu">
+</aside>
 
 <main>
-    <!-- Foto de destaque: salve a imagem como imagens/foto-chocante.jpg -->
+    <!-- Foto de destaque: salve como imagens/foto-chocante.jpg -->
     <section class="destaque">
         <article class="tema">
-            <h2>Tema</h2>
-            <p>Tecnologia consciente. Futuro sustentável. Entenda os impactos da extração de minérios e do lixo eletrônico, e como a reciclagem pode ajudar.</p>
+            <h1>Tecnologia consciente. Futuro sustentável.</h1>
+            <p>Entenda os impactos da extração de minérios e do lixo eletrônico, e como a reciclagem pode ajudar.</p>
+            <a class="botao" href="problema.html">Ver o problema</a>
         </article>
     </section>
+
+    <!-- Números de impacto: troque pelos seus dados; cada um tem sua fonte -->
+    <section class="numeros" aria-label="Números de impacto">
+        <article class="numero"><strong>00 mi t</strong><p>de lixo eletrônico gerado por ano no mundo</p><small class="fonte">Fonte: <cite>Instituição ou autor, título do documento</cite> (ano). <a href="#" target="_blank" rel="noopener">Acessar</a></small></article>
+        <article class="numero"><strong>00%</strong><p>do lixo eletrônico é reciclado corretamente</p><small class="fonte">Fonte: <cite>Instituição ou autor, título do documento</cite> (ano). <a href="#" target="_blank" rel="noopener">Acessar</a></small></article>
+        <article class="numero"><strong>00 kg</strong><p>de lixo eletrônico por pessoa no Brasil por ano</p><small class="fonte">Fonte: <cite>Instituição ou autor, título do documento</cite> (ano). <a href="#" target="_blank" rel="noopener">Acessar</a></small></article>
+    </section>
+
+    <section class="cards" aria-label="Conheça o projeto">
+        <article class="card"><h2><a href="sobre.html">Sobre</a></h2><p>Quem somos e por que escolhemos este tema.</p></article>
+        <article class="card"><h2><a href="problema.html">Problema</a></h2><p>O caminho da mina ao lixo eletrônico.</p></article>
+        <article class="card"><h2><a href="pesquisas.html">Pesquisas</a></h2><p>Dados, estatísticas e infográficos.</p></article>
+        <article class="card"><h2><a href="logistica_reversa.html">Logística reversa</a></h2><p>Como devolver e reciclar corretamente.</p></article>
+    </section>
+
+    <aside class="curiosidade">
+        <h2>Você sabia?</h2>
+        <p>Escreva aqui uma curiosidade curta sobre minérios ou lixo eletrônico.</p>
+        <small class="fonte">Fonte: <cite>Instituição ou autor, título do documento</cite> (ano). <a href="#" target="_blank" rel="noopener">Acessar</a></small>
+    </aside>
 </main>
+
+<footer class="rodape">
+    <section class="rodape-info">
+        <h2>Miner<span>Tech</span></h2>
+        <p>Um projeto dedicado à conscientização sobre os impactos do lixo eletrônico e à promoção da sustentabilidade por meio da reciclagem e da logística reversa.</p>
+    </section>
+    <nav class="rodape-nav" aria-label="Navegação do rodapé">
+        <h3>Páginas</h3>
+        <a href="index.html">Início</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="pesquisas.html">Pesquisas</a>
+        <a href="problema.html">Problema</a>
+        <a href="logistica_reversa.html">Logística reversa</a>
+        <a href="contato.html">Contato</a>
+    </nav>
+    <section class="rodape-contato">
+        <h3>Contato</h3>
+        <p>Entre em contato com nossa equipe.</p>
+        <a href="contato.html">Fale conosco</a>
+    </section>
+    <p class="rodape-final">MinerTech - Projeto Educacional © <time datetime="2026">2026</time> · Instituição e dados de contato fictícios, para fins acadêmicos.</p>
+</footer>
 
 </body>
 </html>
