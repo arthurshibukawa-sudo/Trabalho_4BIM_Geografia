@@ -3,57 +3,158 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="JavaScript/script.js" defer></script>
+    <title>MinerTech | Contato</title>
+    <meta name="description" content="Fale com a equipe do projeto MinerTech.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="imagens/favicon-32x32.png">
     <link rel="stylesheet" href="CSS/style.css">
+    <script src="JavaScript/script.js" defer></script>
 </head>
 <body>
-   <!-- Cabeçalho principal do site -->
-<header>
-    <!-- Coloque aqui o logotipo, o título do site ou um banner principal -->
-    
-    <!-- Menu de navegação global -->
-    <nav>
-        <!-- Insira os links das suas outras páginas aqui -->
-    </nav>
+
+<header class="cabecalho">
+    <button class="botao-menu" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-lateral">☰</button>
+    <a href="index.html" class="marca">
+        <img src="imagens/logo.png" alt="Logotipo MinerTech" class="logo">
+        <span class="nome-site">Miner<span>Tech</span></span>
+    </a>
 </header>
 
-<!-- Conteúdo principal e exclusivo desta página -->
+<aside class="menu-lateral" id="menu-lateral">
+    <div class="menu-topo">
+        <h2 class="menu-titulo">Menu</h2>
+        <button class="botao-recolher" type="button" aria-label="Recolher menu" aria-expanded="true" aria-controls="menu-lateral">«</button>
+    </div>
+    <nav class="menu" aria-label="Navegação principal">
+            <a href="index.html"><span class="icone" aria-hidden="true">⌂</span><span class="texto">Início</span></a>
+            <a href="sobre.html"><span class="icone" aria-hidden="true">ℹ</span><span class="texto">Sobre</span></a>
+            <a href="pesquisas.html"><span class="icone" aria-hidden="true">▤</span><span class="texto">Pesquisas</span></a>
+            <a href="problema.html"><span class="icone" aria-hidden="true">⚠</span><span class="texto">Problema</span></a>
+            <a href="logistica_reversa.html"><span class="icone" aria-hidden="true">♻</span><span class="texto">Logística reversa</span></a>
+            <a href="contato.html" class="ativo" aria-current="page"><span class="icone" aria-hidden="true">✉</span><span class="texto">Contato</span></a>
+    </nav>
+    <img src="imagens/logo.png" alt="" class="logo-menu">
+</aside>
+
 <main>
+    <h1 class="titulo-pagina">Fale com o Instituto MinerTech</h1>
 
-    <!-- Seção de destaque ou bloco principal -->
-    <section>
-        
-        <!-- Conteúdo autônomo (ex: um post de blog, um artigo, uma notícia) -->
-        <article>
-            <!-- Títulos, parágrafos, imagens do seu artigo ficam aqui -->
-        </article>
-
-        <article>
-            <!-- Outro post ou item de conteúdo independente -->
-        </article>
-
+    <section class="aviso-ficticio">
+        <p><strong>Atenção:</strong> todos os dados de contato desta página (organização, endereço, telefone e e-mail) são fictícios, criados exclusivamente para fins acadêmicos.</p>
     </section>
 
-    <!-- Outra seção temática do site (ex: Serviços, Sobre, Contato) -->
-    <section>
-        <!-- Conteúdo da segunda seção -->
-    </section>
+    <div class="secao-contato">
 
-    <!-- Barra lateral com conteúdos relacionados ou secundários -->
-    <aside>
-        <!-- Widgets, links adicionais, anúncios ou redes sociais -->
-    </aside>
+        <section class="bloco-formulario" aria-labelledby="titulo-form">
+            <h2 id="titulo-form">Envie sua mensagem</h2>
 
+            <!-- Formulário fictício: o script.js só mostra a confirmação, nenhum dado é enviado -->
+            <form action="#" id="form-contato" novalidate>
+
+                <div class="campo">
+                    <label for="nome">Nome completo</label>
+                    <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" autocomplete="name" required>
+                </div>
+
+                <div class="campo">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" autocomplete="email" required>
+                </div>
+
+                <div class="campo">
+                    <label for="telefone">Telefone</label>
+                    <input type="tel" id="telefone" name="telefone" placeholder="(11) 90000-0000" autocomplete="tel">
+                </div>
+
+                <div class="campo">
+                    <label for="nascimento">Data de nascimento</label>
+                    <input type="date" id="nascimento" name="nascimento">
+                </div>
+
+                <div class="campo">
+                    <label for="assunto">Assunto</label>
+                    <select id="assunto" name="assunto">
+                        <option value="">Selecione uma opção</option>
+                        <option value="duvida">Dúvida sobre o projeto</option>
+                        <option value="descarte">Onde descartar meu aparelho</option>
+                        <option value="parceria">Parceria</option>
+                        <option value="imprensa">Imprensa</option>
+                        <option value="outro">Outro</option>
+                    </select>
+                </div>
+
+                <fieldset class="campo">
+                    <legend>Como você conheceu o site?</legend>
+                    <div class="opcao-radio"><input type="radio" id="origem-redes" name="origem" value="redes-sociais"><label for="origem-redes">Redes sociais</label></div>
+                    <div class="opcao-radio"><input type="radio" id="origem-amigo" name="origem" value="amigo"><label for="origem-amigo">Indicação de amigo</label></div>
+                    <div class="opcao-radio"><input type="radio" id="origem-escola" name="origem" value="escola"><label for="origem-escola">Escola ou professor</label></div>
+                    <div class="opcao-radio"><input type="radio" id="origem-busca" name="origem" value="busca"><label for="origem-busca">Busca no Google</label></div>
+                </fieldset>
+
+                <div class="campo campo-checkbox">
+                    <input type="checkbox" id="newsletter" name="newsletter">
+                    <label for="newsletter">Quero receber novidades e conteúdos por e-mail</label>
+                </div>
+
+                <div class="campo">
+                    <label for="mensagem">Mensagem</label>
+                    <textarea id="mensagem" name="mensagem" rows="6" placeholder="Escreva sua mensagem aqui..." required></textarea>
+                </div>
+
+                <button type="submit" class="botao">Enviar mensagem</button>
+                <p class="retorno" id="retorno" role="status" aria-live="polite" hidden>Mensagem enviada! Obrigado pelo contato. Responderemos em até 2 dias úteis.</p>
+            </form>
+        </section>
+
+        <aside class="bloco-info" aria-labelledby="titulo-info">
+            <h2 id="titulo-info">Informações de contato</h2>
+
+            <address>
+                <strong>Instituto MinerTech de Educação Ambiental</strong><br>
+                Rua das Palmeiras, 1200, Centro<br>
+                São Paulo - SP<br>
+                CEP: 01000-000<br>
+                Telefone: (11) 5555-0123<br>
+                E-mail: <a href="mailto:contato@minertech.example">contato@minertech.example</a>
+            </address>
+
+            <h3>Horário de atendimento</h3>
+            <dl class="horarios">
+                <dt>Segunda a sexta</dt><dd>9h às 18h</dd>
+                <dt>Sábado</dt><dd>9h às 13h</dd>
+                <dt>Domingo e feriados</dt><dd>Fechado</dd>
+            </dl>
+
+            <h3>Localização (referência)</h3>
+            <iframe title="Mapa com localização de referência do Instituto MinerTech" src="https://www.google.com/maps?q=São+Paulo,+SP&output=embed" width="100%" height="250" style="border:0;" allowfullscreen loading="lazy"></iframe>
+        </aside>
+
+    </div>
 </main>
 
-
-
-<!-- Rodapé principal do site -->
-<footer>
-    <!-- Informações de direitos autorais, links legais ou contato -->
+<footer class="rodape">
+    <section class="rodape-info">
+        <h2>Miner<span>Tech</span></h2>
+        <p>Um projeto dedicado à conscientização sobre os impactos do lixo eletrônico e à promoção da sustentabilidade por meio da reciclagem e da logística reversa.</p>
+    </section>
+    <nav class="rodape-nav" aria-label="Navegação do rodapé">
+        <h3>Páginas</h3>
+        <a href="index.html">Início</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="pesquisas.html">Pesquisas</a>
+        <a href="problema.html">Problema</a>
+        <a href="logistica_reversa.html">Logística reversa</a>
+        <a href="contato.html">Contato</a>
+    </nav>
+    <section class="rodape-contato">
+        <h3>Contato</h3>
+        <p>Entre em contato com nossa equipe.</p>
+        <a href="contato.html">Fale conosco</a>
+    </section>
+    <p class="rodape-final">MinerTech - Projeto Educacional © <time datetime="2026">2026</time> · Instituição e dados de contato fictícios, para fins acadêmicos.</p>
 </footer>
-
 
 </body>
 </html>
