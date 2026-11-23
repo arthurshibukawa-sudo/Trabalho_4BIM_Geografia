@@ -158,6 +158,217 @@ document.addEventListener("DOMContentLoaded", () => {
             retorno.scrollIntoView({ behavior: semMovimento ? "auto" : "smooth", block: "nearest" });
         });
     }
+    // ===== Filtro por tema (página Pesquisas) =====
+    const botoesFiltro = document.querySelectorAll(".filtro-botao");
+    if (botoesFiltro.length) {
+        const secoesTema = document.querySelectorAll("#mineracao, #lixo-eletronico, #brasil");
+
+        botoesFiltro.forEach(botao => {
+            botao.addEventListener("click", () => {
+                const tema = botao.dataset.tema;
+                botoesFiltro.forEach(outro => outro.setAttribute("aria-pressed", String(outro === botao)));
+                secoesTema.forEach(secao => {
+                    secao.hidden = tema !== "todos" && secao.id !== tema;
+                });
+            });
+        });
+    }
+
+    // ===== Busca no site (bloco na página Início) =====
+    const formBusca = document.getElementById("form-busca");
+    if (formBusca && typeof indiceBusca !== "undefined") {
+        const campoBusca = document.getElementById("campo-busca");
+        const resumoBusca = document.getElementById("busca-resumo");
+        const listaResultados = document.getElementById("resultados");
+
+        // FUNÇÃO POR EXPRESSÃO (com retorno): deixa o texto em minúsculas e sem acento, letra por letra,
+        // para o tamanho do texto não mudar (isso mantém o destaque no lugar certo)
+        const normalizar = function (texto) {
+            return texto.split("").map(letra =>
+                letra.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()
+            ).join("");
+        };
+
+        // Junta a matriz irregular numa lista só: cada linha (página) vira uma lista de itens
+        // que já sabem o nome e o arquivo da página, e o concat cola uma lista na outra
+        let todosItens = [];
+        indiceBusca.forEach((linha, posicaoPagina) => {
+            const itensDaPagina = linha.map(item => ({
+                titulo: item.titulo,
+                texto: item.texto,
+                pagina: nomesPaginas[posicaoPagina],
+                arquivo: arquivosPaginas[posicaoPagina]
+            }));
+            todosItens = todosItens.concat(itensDaPagina);
+        });
+
+        // Devolve uma lista de verdadeiro/falso: true nas letras que devem ficar destacadas
+        const acharTrechos = (texto, palavras) => {
+            const limpo = normalizar(texto);
+            const marcado = new Array(texto.length).fill(false);
+            palavras.forEach(palavra => {
+                let posicao = limpo.indexOf(palavra);
+                while (posicao !== -1) {
+                    for (let i = posicao; i < posicao + palavra.length; i++) marcado[i] = true;
+                    posicao = limpo.indexOf(palavra, posicao + 1);
+                }
+            });
+            return marcado;
+        };
+
+        // FUNÇÃO SEM RETORNO: escreve o texto no elemento; os trechos marcados vão dentro de <mark>
+        function escreverComDestaque(elemento, texto, marcado, inicio, fim) {
+            let i = inicio;
+            while (i < fim) {
+                let j = i;
+                while (j < fim && marcado[j] === marcado[i]) j++;
+                const pedaco = texto.slice(i, j);
+                if (marcado[i]) {
+                    const destaque = document.createElement("mark");
+                    destaque.textContent = pedaco;
+                    elemento.appendChild(destaque);
+                } else {
+                    elemento.appendChild(document.createTextNode(pedaco));
+                }
+                i = j;
+            }
+        }
+
+        // Textos longos viram um pedaço de uns 170 caracteres em volta da primeira palavra achada
+        const recortar = (texto, marcado) => {
+            const TAMANHO = 170;
+            if (texto.length <= TAMANHO) return [0, texto.length];
+            let inicio = Math.max(0, marcado.indexOf(true) - 60);
+            let fim = Math.min(texto.length, inicio + TAMANHO);
+            if (inicio > 0) {
+                const espaco = texto.indexOf(" ", inicio);
+                if (espaco !== -1 && espaco < fim) inicio = espaco + 1;
+            }
+            if (fim < texto.length) {
+                const espaco = texto.lastIndexOf(" ", fim);
+                if (espaco > inicio) fim = espaco;
+            }
+            return [inicio, fim];
+        };
+
+        const buscar = () => {
+            const consulta = campoBusca.value.trim();
+            listaResultados.replaceChildren();
+            if (!consulta) {
+                resumoBusca.textContent = "";
+                return;
+            }
+
+            const palavras = normalizar(consulta).split(/\s+/);
+
+            // filter: fica só com os itens em que TODAS as palavras (every) aparecem no título ou no texto (includes)
+            const achados = todosItens.filter(item => {
+                const tituloLimpo = normalizar(item.titulo);
+                const textoLimpo = normalizar(textos[item.texto]);
+                return palavras.every(palavra => tituloLimpo.includes(palavra) || textoLimpo.includes(palavra));
+            });
+
+            achados.forEach(item => {
+                const texto = textos[item.texto];
+                const linha = document.createElement("li");
+
+                const cabeca = document.createElement("p");
+                cabeca.className = "resultado-cabeca";
+                const link = document.createElement("a");
+                link.href = item.arquivo + "#texto-" + item.texto;
+                escreverComDestaque(link, item.titulo, acharTrechos(item.titulo, palavras), 0, item.titulo.length);
+                const nomePagina = document.createElement("span");
+                nomePagina.className = "resultado-pagina";
+                nomePagina.textContent = " · " + item.pagina;
+                cabeca.append(link, nomePagina);
+
+                const marcadoTexto = acharTrechos(texto, palavras);
+                const [inicio, fim] = recortar(texto, marcadoTexto);
+                const trecho = document.createElement("p");
+                trecho.className = "resultado-trecho";
+                if (inicio > 0) trecho.append("… ");
+                escreverComDestaque(trecho, texto, marcadoTexto, inicio, fim);
+                if (fim < texto.length) trecho.append("…");
+
+                linha.append(cabeca, trecho);
+                listaResultados.appendChild(linha);
+            });
+
+            resumoBusca.textContent = achados.length
+                ? achados.length + " resultado(s) para “" + consulta + "”."
+                : "Nenhum resultado para “" + consulta + "”.";
+        };
+
+        formBusca.addEventListener("submit", (e) => { e.preventDefault(); buscar(); });
+        campoBusca.addEventListener("input", buscar);
+    }
+
+    // ===== Quiz (final da página Pesquisas) =====
+    const areaQuiz = document.getElementById("quiz-area");
+    if (areaQuiz && typeof perguntasQuiz !== "undefined" && typeof alternativasQuiz !== "undefined") {
+        const criar = (tag, classe, texto) => {
+            const elemento = document.createElement(tag);
+            if (classe) elemento.className = classe;
+            if (texto) elemento.textContent = texto;
+            return elemento;
+        };
+
+        const montarQuiz = () => {
+            areaQuiz.replaceChildren();
+            let terminou = false;
+
+            // Uma "caixinha" (fieldset) por pergunta, com uma opção (radio) para cada alternativa
+            const grupos = perguntasQuiz.map((pergunta, n) => {
+                const grupo = criar("fieldset", "quiz-grupo");
+                grupo.appendChild(criar("legend", "quiz-pergunta", (n + 1) + ". " + pergunta));
+                alternativasQuiz[n].forEach((texto, posicao) => {
+                    const rotulo = criar("label", "quiz-opcao");
+                    const radio = document.createElement("input");
+                    radio.type = "radio";
+                    radio.name = "pergunta-" + n;
+                    radio.value = String(posicao);
+                    rotulo.append(radio, criar("span", "", texto));
+                    grupo.appendChild(rotulo);
+                });
+                areaQuiz.appendChild(grupo);
+                return grupo;
+            });
+
+            const resultado = criar("p", "quiz-resultado-texto");
+            resultado.setAttribute("aria-live", "polite");
+            const botao = criar("button", "botao botao-escuro", "Ver resultado");
+            botao.type = "button";
+            areaQuiz.append(resultado, botao);
+
+            botao.addEventListener("click", () => {
+                // Depois do resultado, o mesmo botão serve para repetir o quiz
+                if (terminou) { montarQuiz(); return; }
+
+                // Só continua se todas as perguntas tiverem uma opção marcada
+                if (grupos.some(grupo => !grupo.querySelector("input:checked"))) {
+                    resultado.textContent = "Responda todas as perguntas para ver o resultado.";
+                    return;
+                }
+
+                let acertos = 0;
+                grupos.forEach((grupo, n) => {
+                    const escolhida = Number(grupo.querySelector("input:checked").value);
+                    const rotulos = grupo.querySelectorAll(".quiz-opcao");
+                    if (escolhida === gabaritoQuiz[n]) acertos++;
+                    else rotulos[escolhida].classList.add("errada");
+                    rotulos[gabaritoQuiz[n]].classList.add("certa");
+                    grupo.querySelectorAll("input").forEach(radio => { radio.disabled = true; });
+                });
+
+                resultado.textContent = "Você acertou " + acertos + " de " + perguntasQuiz.length + ".";
+                botao.textContent = "Repetir o quiz";
+                terminou = true;
+            });
+        };
+
+        montarQuiz();
+    }
+
     // ===== Botão de tema (interruptor sol/lua no cabeçalho) =====
     const raiz = document.documentElement;
     const CHAVE_TEMA = "minertech-tema";
