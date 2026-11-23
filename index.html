@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="imagens/favicon-32x32.png">
     <link rel="stylesheet" href="CSS/style.css">
+    <script src="JavaScript/dado.js" defer></script>
     <script src="JavaScript/script.js" defer></script>
 </head>
 <body>
@@ -39,7 +40,7 @@
 </aside>
 
 <main>
-    <!-- Foto de destaque: salve como imagens/foto-chocante.jpg -->
+    <!-- Foto de destaque: salvo como imagens/foto-chocante.jpg -->
     <section class="destaque">
         <article class="tema">
             <h1>Tecnologia consciente. Futuro sustentável.</h1>
@@ -49,27 +50,39 @@
     </section>
 
    <!-- Números de impacto: troque pelos seus dados; cada um tem sua fonte -->
-<section class="numeros" aria-label="Números de impacto">
+<section class="numeros" id="numeros" aria-label="Números de impacto">
     <article class="numero">
         <strong>62 mi t</strong>
-        <p>de lixo eletrônico gerado por ano no mundo</p>
+        <p data-texto="inicio-numero-1"></p>
         <small class="fonte">Fonte: <cite>UNITAR e UIT, The Global E-waste Monitor</cite> (2024). <a href="https://ewastemonitor.info/" target="_blank" rel="noopener">Acessar</a></small>
     </article>
     
     <article class="numero">
         <strong>22,3%</strong>
-        <p>do lixo eletrônico é reciclado corretamente</p>
+        <p data-texto="inicio-numero-2"></p>
         <small class="fonte">Fonte: <cite>UNITAR e UIT, The Global E-waste Monitor</cite> (2024). <a href="https://ewastemonitor.info/" target="_blank" rel="noopener">Acessar</a></small>
     </article>
     
     <article class="numero">
         <strong>11,4 kg</strong>
-        <p>de lixo eletrônico por pessoa no Brasil por ano</p>
+        <p data-texto="inicio-numero-3"></p>
         <small class="fonte">Fonte: <cite>UNITAR e UIT, The Global E-waste Monitor</cite> (2024). <a href="https://ewastemonitor.info/" target="_blank" rel="noopener">Acessar</a></small>
     </article>
 </section>
 
 
+
+    <section class="bloco-busca" id="busca" aria-labelledby="titulo-busca">
+        <h2 id="titulo-busca">Buscar no site</h2>
+        <p>Digite uma palavra, como brasil, lítio ou reciclagem, e veja em quais páginas ela aparece.</p>
+        <form class="busca" id="form-busca" role="search" action="#">
+            <label for="campo-busca" class="so-leitor">Buscar no site</label>
+            <input type="search" id="campo-busca" name="q" autocomplete="off" placeholder="Digite o que você procura">
+            <button type="submit" class="botao">Buscar</button>
+        </form>
+        <p class="busca-resumo" id="busca-resumo" aria-live="polite"></p>
+        <ul class="resultados" id="resultados"></ul>
+    </section>
 
     <section class="cards" aria-label="Conheça o projeto">
         <article class="card"><h2><a href="sobre.html">Sobre</a></h2><p>Quem somos e por que escolhemos este tema.</p></article>
@@ -80,25 +93,10 @@
 
 
 
-    <aside class="curiosidade">
+    <aside class="curiosidade" id="curiosidade">
         <h2>Você sabia?</h2>
-        <p>existe mais ouro dentro de uma tonelada de lixo eletrônico do que em 
-            uma tonelada de rocha extraída de uma mina de ouro?</p>
-        <small class="fonte">Fonte: <cite>YouTube Shorts</cite>. <a href="https://www.youtube.com/shorts/ohmd487PGI0" target="_blank" rel="noopener">Acessar</a></small>
-
-        <figure class="video-curiosidade" style="margin:1.5rem auto 0;max-width:315px;">
-            <iframe
-                src="https://www.youtube-nocookie.com/embed/ohmd487PGI0"
-                title="Vídeo do YouTube sobre a curiosidade"
-                width="315" height="560"
-                style="border:0;width:100%;aspect-ratio:9/16;height:auto;border-radius:12px;"
-                allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen
-                loading="lazy"></iframe>
-            <figcaption style="margin-top:.5rem;text-align:center;">
-                <a href="https://www.youtube.com/shorts/ohmd487PGI0" target="_blank" rel="noopener">Assistir no YouTube</a>
-            </figcaption>
-        </figure>
+        <p data-texto="inicio-curiosidade"></p>
+        <small class="fonte">Fonte: <cite>Instituição ou autor, título do documento</cite> (ano). <a href="#" target="_blank" rel="noopener">Acessar</a></small>
     </aside>
 </main>
 
