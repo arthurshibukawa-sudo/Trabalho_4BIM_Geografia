@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="imagens/favicon-32x32.png">
     <link rel="stylesheet" href="CSS/style.css">
+    <script src="JavaScript/dado.js" defer></script>
     <script src="JavaScript/script.js" defer></script>
 </head>
 <body>
@@ -42,16 +43,26 @@
     <h1 class="titulo-pagina">Pesquisas e dados</h1>
     <p class="introducao">Os números por trás do projeto. Cada dado traz sua própria fonte logo abaixo.</p>
 
-    <section class="numeros" aria-label="Principais dados">
-        <article class="numero"><strong>82 mi t</strong><p>de lixo eletrônico previstos para 2030, contra 62 mi t em 2022</p><small class="fonte">Fonte: <cite>UNITAR e UIT, The Global E-waste Monitor</cite> (2024). <a href="https://www.itu.int/en/mediacentre/pages/pr-2024-03-20-e-waste-recycling.aspx" target="_blank" rel="noopener">Acessar</a></small></article>
-        <article class="numero"><strong>US$ 62 bi</strong><p>em recursos recuperáveis do lixo eletrônico não aproveitados em 2022</p><small class="fonte">Fonte: <cite>UNITAR e UIT, The Global E-waste Monitor</cite> (2024). <a href="https://www.itu.int/en/mediacentre/pages/pr-2024-03-20-e-waste-recycling.aspx" target="_blank" rel="noopener">Acessar</a></small></article>
-        <article class="numero"><strong>3%</strong><p>do lixo eletrônico brasileiro é reciclado formalmente</p><small class="fonte">Fonte: <cite>Brasil de Fato, com dados da Global E-waste Statistics Partnership</cite> (2024). <a href="https://www.brasildefato.com.br/2024/12/26/brasil-e-5-pais-que-mais-gera-lixo-eletronico-mas-so-3-e-descartado-corretamente-saiba-como-fazer/" target="_blank" rel="noopener">Acessar</a></small></article>
+    <section class="numeros" id="numeros" aria-label="Principais dados">
+        <article class="numero"><strong>82 mi t</strong><p data-texto="pesquisas-numero-1"></p><small class="fonte">Fonte: <cite>UNITAR e UIT, The Global E-waste Monitor</cite> (2024). <a href="https://www.itu.int/en/mediacentre/pages/pr-2024-03-20-e-waste-recycling.aspx" target="_blank" rel="noopener">Acessar</a></small></article>
+        <article class="numero"><strong>US$ 62 bi</strong><p data-texto="pesquisas-numero-2"></p><small class="fonte">Fonte: <cite>UNITAR e UIT, The Global E-waste Monitor</cite> (2024). <a href="https://www.itu.int/en/mediacentre/pages/pr-2024-03-20-e-waste-recycling.aspx" target="_blank" rel="noopener">Acessar</a></small></article>
+        <article class="numero"><strong>3%</strong><p data-texto="pesquisas-numero-3"></p><small class="fonte">Fonte: <cite>Brasil de Fato, com dados da Global E-waste Statistics Partnership</cite> (2024). <a href="https://www.brasildefato.com.br/2024/12/26/brasil-e-5-pais-que-mais-gera-lixo-eletronico-mas-so-3-e-descartado-corretamente-saiba-como-fazer/" target="_blank" rel="noopener">Acessar</a></small></article>
     </section>
+
+    <div class="filtro" role="group" aria-labelledby="titulo-filtro">
+        <p class="filtro-titulo" id="titulo-filtro">Filtrar por tema:</p>
+        <div class="filtro-botoes">
+            <button type="button" class="filtro-botao" data-tema="todos" aria-pressed="true">Todos</button>
+            <button type="button" class="filtro-botao" data-tema="lixo-eletronico" aria-pressed="false">Lixo eletrônico</button>
+            <button type="button" class="filtro-botao" data-tema="brasil" aria-pressed="false">Brasil</button>
+            <button type="button" class="filtro-botao" data-tema="mineracao" aria-pressed="false">Mineração</button>
+        </div>
+    </div>
 
     <section id="mineracao">
         <article>
             <h2>Mineração</h2>
-            <p>Celulares e baterias dependem de minérios como lítio, cobalto, níquel e grafite, e a demanda cresce rápido. Segundo a Agência Internacional de Energia (IEA), o consumo de lítio deve ser cerca de cinco vezes maior em 2040 do que hoje, o de grafite e níquel deve dobrar e o de cobalto e terras raras deve subir de 50% a 60%. A extração também é concentrada: em 2024, três países responderam por 77% do lítio extraído no mundo.</p>
+            <p data-texto="mineracao"></p>
             <small class="fonte">Fonte: <cite>IEA, Global Critical Minerals Outlook 2025</cite> (2025). <a href="https://www.iea.org/reports/global-critical-minerals-outlook-2025/outlook-for-key-minerals" target="_blank" rel="noopener">Acessar</a></small>
             <figure class="infografico">
                 <img src="imagens/infografico-mineracao.png" alt="Gráfico de barras com o crescimento previsto da demanda por minerais até 2040: lítio cerca de 5 vezes, grafite e níquel 2 vezes, cobalto e terras raras de 50% a 60% e cobre 30%.">
@@ -63,7 +74,7 @@
     <section id="lixo-eletronico">
         <article>
             <h2>Lixo eletrônico</h2>
-            <p>O mundo gerou 62 milhões de toneladas de lixo eletrônico em 2022, 82% a mais do que em 2010. Só 22,3% dessa massa foi documentada como coletada e reciclada de forma adequada. A previsão é chegar a 82 milhões de toneladas em 2030, e a taxa de reciclagem pode cair para 20%, porque o lixo eletrônico cresce cerca de cinco vezes mais rápido que a reciclagem.</p>
+            <p data-texto="lixo-eletronico"></p>
             <small class="fonte">Fonte: <cite>UNITAR e UIT, The Global E-waste Monitor</cite> (2024). <a href="https://www.itu.int/en/mediacentre/pages/pr-2024-03-20-e-waste-recycling.aspx" target="_blank" rel="noopener">Acessar</a></small>
             <figure class="infografico">
                 <img src="imagens/infografico-lixo-eletronico.png" alt="Gráfico de barras da geração mundial de lixo eletrônico: 34 milhões de toneladas em 2010, 62 milhões em 2022 e 82 milhões previstos para 2030.">
@@ -75,7 +86,7 @@
     <section id="brasil">
         <article>
             <h2>E no Brasil?</h2>
-            <p>O Brasil gerou cerca de 2,4 milhões de toneladas de lixo eletrônico em 2022. É o segundo maior gerador das Américas, atrás só dos Estados Unidos, e estimativas o colocam em quinto lugar no mundo. Apesar do volume, apenas cerca de 3% desse total é reciclado formalmente.</p>
+            <p data-texto="brasil"></p>
             <small class="fonte">Fonte: <cite>JB Ambiental/((o))eco, com dados do Global E-waste Monitor</cite> (2024). <a href="https://www.jb.com.br/brasil/meio-ambiente/2024/03/1049208-producao-mundial-de-lixo-eletronico-e-cinco-vezes-maior-do-que-sua-reciclagem-diz-onu.html" target="_blank" rel="noopener">Acessar</a></small>
             <figure class="infografico">
                 <img src="imagens/infografico-brasil.png" alt="Gráfico de barras com a geração de lixo eletrônico nas Américas: Estados Unidos 7,2 milhões de toneladas, Brasil 2,4, México 1,5 e Canadá 0,77.">
@@ -84,11 +95,17 @@
         </article>
     </section>
 
-    <aside class="curiosidade">
+    <aside class="curiosidade" id="curiosidade">
         <h2>Você sabia?</h2>
-        <p>Em 2022, a reciclagem formal de lixo eletrônico evitou a extração de cerca de 900 milhões de toneladas de minério.</p>
+        <p data-texto="pesquisas-curiosidade"></p>
         <small class="fonte">Fonte: <cite>UNITAR e UIT, The Global E-waste Monitor</cite> (2024). <a href="https://www.itu.int/en/mediacentre/pages/pr-2024-03-20-e-waste-recycling.aspx" target="_blank" rel="noopener">Acessar</a></small>
     </aside>
+
+    <section id="quiz">
+        <h2>Quiz: teste seus conhecimentos</h2>
+        <p>Responda as duas perguntas com base nos dados desta página.</p>
+        <div class="quiz-caixa" id="quiz-area"></div>
+    </section>
 </main>
 
 <footer class="rodape">
