@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="imagens/favicon-32x32.png">
     <link rel="stylesheet" href="CSS/style.css">
+    <script src="JavaScript/dado.js" defer></script>
     <script src="JavaScript/script.js" defer></script>
 </head>
 <body>
@@ -46,7 +47,7 @@
         <li>
             <article class="etapa" id="extracao">
                 <h2>1. Extração</h2>
-                <p>Celulares e baterias dependem de minérios como lítio, cobalto, níquel e cobre, e tirá-los da terra pesa sobre a água e sobre as comunidades vizinhas. No Salar de Atacama, no Chile, a mineração de lítio responde por até 65% do uso regional de água e disputa esse recurso com agricultores e moradores. Na República Democrática do Congo (RDC), que produz mais de 60% do cobalto do mundo, há rios tão ácidos (pH abaixo de 4,5) que a água fica imprópria para beber e irrigar. Em minas artesanais de cobalto do país, estima-se que milhares de crianças trabalhem expostas à poeira do metal, quase sem proteção.</p>
+                <p data-texto="etapa-extracao"></p>
                 <small class="fonte">Fonte: <cite>UNU-INWEH, Critical Minerals, Water Insecurity and Injustice, via IPS e The Conversation</cite> (2026). <a href="https://www.ipsnews.net/2026/04/clean-energy-digital-technologies-are-coming-at-a-human-cost-un-report-warns/" target="_blank" rel="noopener">IPS</a> · <a href="https://theafricanmirror.africa/sustainability/the-race-to-mine-critical-minerals-for-ai-and-clean-energy-is-creating-sacrifice-zones-that-harm-water-and-health-of-worlds-poor/" target="_blank" rel="noopener">The Conversation</a></small>
                 <figure class="infografico">
                     <img src="imagens/infografico-extracao.png" alt="Gráfico de barras sobre a mineração: a RDC responde por mais de 60% da produção mundial de cobalto, a mineração usa até 65% da água da região do Salar de Atacama, no Chile, e cerca de um terço da população da RDC tem acesso básico a água potável.">
@@ -57,7 +58,7 @@
         <li>
             <article class="etapa" id="fabricacao">
                 <h2>2. Fabricação</h2>
-                <p>Um smartphone já chega às nossas mãos com uma grande “dívida” ambiental. Segundo a Deloitte, um aparelho novo gera em média 85 kg de CO₂ equivalente no primeiro ano de vida, e 95% disso vem da fabricação, o que inclui extrair as matérias-primas e transportar as peças. Dentro do aparelho, os circuitos integrados (chips e memórias) são o item mais pesado: respondem por 72% a 77% das emissões de fabricação de modelos recentes, como o iPhone 17 e o Pixel 10.</p>
+                <p data-texto="etapa-fabricacao"></p>
                 <small class="fonte">Fonte: <cite>Deloitte, Environmental impact of smartphones (TMT Predictions)</cite> (2022). <a href="https://www2.deloitte.com/us/en/insights/industry/technology/technology-media-and-telecom-predictions/2022/environmental-impact-smartphones.html" target="_blank" rel="noopener">Acessar</a></small>
                 <small class="fonte">Fonte: <cite>TechInsights, The Hidden Cost of ‘Pro’</cite> (2026). <a href="https://techinsights.com/ja/node/61218" target="_blank" rel="noopener">Acessar</a></small>
             </article>
@@ -65,14 +66,14 @@
         <li>
             <article class="etapa" id="uso">
                 <h2>3. Uso e troca</h2>
-                <p>Os celulares são os aparelhos de vida mais curta dentro de casa. Pesquisa do Idec com a Market Analysis mostrou que 54% dos brasileiros usam o celular por menos de 3 anos (o tempo médio de posse é de 2,6 anos) e que 81% trocam de aparelho sem antes levá-lo à assistência técnica para saber se tem conserto. Parte da troca vem de defeitos e do que o Idec chama de obsolescência programada, quando o produto é planejado para durar menos. Outra parte vem da obsolescência psicológica: a pessoa troca um aparelho que ainda funciona só porque surgiu um modelo novo. Os dados são de 2014, mas ajudam a entender como esse ciclo curto alimenta a pilha de lixo eletrônico.</p>
+                <p data-texto="etapa-uso"></p>
                 <small class="fonte">Fonte: <cite>Idec e Market Analysis, pesquisa sobre uso e descarte de eletroeletrônicos</cite> (2014). <a href="https://idec.org.br/node/7846" target="_blank" rel="noopener">Acessar</a> · <a href="https://idec.org.br/print/24609" target="_blank" rel="noopener">Tempo de posse</a></small>
             </article>
         </li>
         <li>
             <article class="etapa" id="descarte">
                 <h2>4. Descarte</h2>
-                <p>O lixo eletrônico contém substâncias tóxicas, como chumbo, cádmio e mercúrio. Quando ele é queimado a céu aberto ou tratado com ácidos em reciclagem informal para recuperar metais valiosos, a OMS aponta que mais de 1.000 substâncias nocivas podem ser liberadas no ar, no solo e na água. O chumbo e o mercúrio são neurotóxicos e podem prejudicar o desenvolvimento do sistema nervoso, principalmente de crianças e gestantes. E isso é comum: em 2022, só 22,3% do lixo eletrônico do mundo foi documentado como reciclado formalmente.</p>
+                <p data-texto="etapa-descarte"></p>
                 <small class="fonte">Fonte: <cite>OMS, Electronic waste (e-waste) e Children and digital dumpsites</cite> (2024). <a href="https://www.who.int/news-room/fact-sheets/detail/electronic-waste-%28e-waste%29" target="_blank" rel="noopener">Ficha técnica</a> · <a href="https://www.who.int/news-room/q-a-detail/children-and-digital-dumpsites-e-waste-and-health" target="_blank" rel="noopener">Perguntas e respostas</a></small>
                 <figure class="infografico">
                     <img src="imagens/infografico-descarte.png" alt="Gráfico de barras do destino do lixo eletrônico mundial em 2022: cerca de 13,8 milhões de toneladas coletadas e recicladas formalmente (22,3%) e cerca de 48,2 milhões sem reciclagem formal documentada (77,7%).">
@@ -84,9 +85,9 @@
 
     <p class="chamada">Existe saída: conheça a <a href="logistica_reversa.html">logística reversa</a>.</p>
 
-    <aside class="curiosidade">
+    <aside class="curiosidade" id="curiosidade">
         <h2>Você sabia?</h2>
-        <p>Em 2024, a produção mundial de lítio (sem contar os Estados Unidos), cerca de 240 mil toneladas, consumiu uma estimativa de 456 bilhões de litros de água. Isso equivale ao consumo doméstico anual de cerca de 62 milhões de pessoas na África Subsaariana.</p>
+        <p data-texto="problema-curiosidade"></p>
         <small class="fonte">Fonte: <cite>UNU-INWEH, Critical Minerals, Water Insecurity and Injustice, via SciDev.Net</cite> (2026). <a href="https://www.scidev.net/global/news/rush-for-critical-minerals-harming-worlds-poorest/" target="_blank" rel="noopener">Acessar</a></small>
     </aside>
 </main>
@@ -115,4 +116,3 @@
 
 </body>
 </html>
-
